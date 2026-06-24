@@ -1,0 +1,224 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f0f2f5;
+    min-height: 100vh;
+    padding: 30px 0 60px;
+}
+
+.container {
+    width: 80%;
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 28px;
+    font-size: 1.8rem;
+    color: #1a1a2e;
+}
+
+/* Upload */
+.upload-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+.file-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Hide the real file input, style the label instead */
+#pdfFile {
+    display: none;
+}
+
+.file-label {
+    display: inline-block;
+    padding: 9px 16px;
+    border: 2px dashed #aab;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+    transition: border-color 0.2s, color 0.2s;
+    white-space: nowrap;
+    overflow: hidden;
+    max-width: 260px;
+    text-overflow: ellipsis;
+}
+
+.file-label:hover {
+    border-color: #4a6cf7;
+    color: #4a6cf7;
+}
+
+button {
+    padding: 9px 22px;
+    background: #4a6cf7;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    font-weight: 600;
+    transition: background 0.2s, opacity 0.2s;
+}
+
+button:hover:not(:disabled) { background: #3a5ce5; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Progress bar */
+.progress-wrap {
+    margin-top: 16px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: #e0e4f0;
+    border-radius: 99px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0;
+    background: #4a6cf7;
+    border-radius: 99px;
+}
+
+/* Animated indeterminate bar */
+.progress-fill.indeterminate {
+    width: 40%;
+    animation: slide 1.4s ease-in-out infinite;
+}
+
+@keyframes slide {
+    0%   { margin-left: -40%; }
+    100% { margin-left: 100%; }
+}
+
+.progress-label {
+    margin-top: 8px;
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* Status text*/
+#status {
+    margin-top: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.status-ok  { color: #2a7a2a; }
+.status-err { color: #c0392b; }
+
+.hidden { display: none !important; }
+
+/* Chat section */
+.chat-section {
+    background: white;
+    border-radius: 12px;
+    padding: 20px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+}
+
+#chatBox {
+    height: 460px;
+    overflow-y: auto;
+    border: 1px solid #e0e4f0;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.empty-state {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-align: center;
+    margin: auto;
+}
+
+.user, .bot {
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    max-width: 88%;
+}
+
+.user {
+    background: #dff0ff;
+    align-self: flex-end;
+    border-bottom-right-radius: 2px;
+}
+
+.bot {
+    background: #f0f0f5;
+    align-self: flex-start;
+    border-bottom-left-radius: 2px;
+}
+
+.bot.error { background: #fdecea; color: #c0392b; }
+
+/* Typing indicator*/
+.bot.typing {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding: 14px;
+}
+
+.bot.typing span {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #999;
+    border-radius: 50%;
+    animation: bounce 1.2s ease-in-out infinite;
+}
+
+.bot.typing span:nth-child(2) { animation-delay: 0.2s; }
+.bot.typing span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40%            { transform: translateY(-6px); opacity: 1; }
+}
+
+/* Input row */
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+#question {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #d0d4e0;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#question:focus { border-color: #4a6cf7; }
+#question:disabled { background: #f8f8f8; }
+
+.query-hint {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: #888;
+}

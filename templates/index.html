@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Multimodal RAG</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Research Paper Chatbot</h1>
+
+        <!-- Upload section: file picker hidden until needed -->
+        <div class="upload-section">
+            <div class="file-row">
+                <label class="file-label" for="pdfFile">
+                    <span id="fileLabel">Choose PDF</span>
+                </label>
+                <input type="file" id="pdfFile" accept=".pdf" onchange="onFileChosen()">
+                <button id="uploadBtn" onclick="uploadPDF()" disabled>Upload PDF</button>
+            </div>
+
+            <!-- Progress bar (hidden by default) -->
+            <div id="progressWrap" class="progress-wrap hidden">
+                <div id="progressBar" class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <p id="progressLabel" class="progress-label">Partitioning PDF — this may take a few minutes…</p>
+            </div>
+
+            <div id="status"></div>
+        </div>
+
+        <div class="chat-section">
+
+            <div id="chatBox">
+                <div class="empty-state">Upload a PDF to start chatting.</div>
+            </div>
+
+            <div class="input-row">
+                <input
+                    type="text"
+                    id="question"
+                    placeholder="Ask a question about your paper…"
+                    onkeydown="if(event.key==='Enter') askQuestion()"
+                    disabled
+                >
+                <button id="sendBtn" onclick="askQuestion()" disabled>Send</button>
+            </div>
+            <p id="queryHint" class="query-hint hidden">⏳ Querying the model — answers may take 10–30 seconds.</p>
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>

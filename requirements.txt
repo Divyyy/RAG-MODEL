@@ -1,0 +1,12 @@
+flask
+werkzeug
+unstructured[pdf]
+langchain-core
+langchain-ollama
+langchain-chroma
+langchain-classic
+ollama
+chromadb
+pillow
+pdf2image
+pdfminer.six
